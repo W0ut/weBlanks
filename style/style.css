@@ -1,0 +1,548 @@
+body {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    color: black;
+    z-index: 1;
+}
+
+span {
+    text-align: center;
+    padding: 0px 6px;
+    cursor: default;
+}
+
+/* ══ GENERAL BOX ════════╗ START ╔═ */
+.box-general {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    align-self: flex-start;
+    top: 70px;
+    min-width: 1200px;
+    min-height: 600px;
+    padding: 4px;
+    z-index: 1;
+    background: #ffdc75;
+}
+/* ══ GENERAL BOX ════════╝  END  ╚═ */
+
+/* ══ CHILD-BOX ════════╗ START ╔═ */
+.box-general>div.child-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    min-width: 400px;
+    min-height: 400px;
+    margin: 1px;
+    padding: 10px 5px;
+    z-index: 2;
+}
+.box-general>div.child-box>span {
+    align-self: flex-start;
+    margin: 4px 0px;
+    width: 100%;
+    font-family: Arial, 'FontAwesome', Helvetica, sans-serif;
+    font-size: 16px;
+    z-index: 3;
+}
+.box-general>div.child-box>div {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 3px;
+    padding: 2px;
+    z-index: 3;
+}
+.box-general>div.child-box table {
+    width: 100%;
+    margin: 3px;
+    padding: 2px;
+}
+.box-general>div.child-box table tr td {
+    padding: 2px 0px;
+}
+/* ══ CHILD-BOX ════════╝  END  ╚═ */
+
+/* ══ CHILD BOX DATA ════════╗ START ╔═ */
+div.child-box-data {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: auto;
+}
+div.child-box-data>img {
+    width: 23px;
+    height: 23px;
+    margin: 1px;
+    border-radius: 0px;
+    cursor: pointer;
+}
+div.child-box-data>img:hover {
+    box-shadow: 0 0 6px #e0ff00;
+    -webkit-box-shadow: 0 0 6px #e0ff00;
+    -moz-box-shadow: 0 0 6px #e0ff00;
+}
+div.child-box-data>input,
+div.child-box-data>select {
+    height: 25px;
+}
+div.child-box-data>.el-for-comm {
+    width: 100%;
+}
+/* ══ CHILD BOX DATA ════════╝  END  ╚═ */
+
+/* ══ BOX CHANGE DATA ════════╗ START ╔═ */
+div.child-box-change-data {
+    height: auto;
+    margin-top: 2px;
+    padding: 4px 6px;
+    border-radius: 15px 0px 15px 15px;
+}
+div.child-box-change-data input,
+div.child-box-change-data textarea,
+div.child-box-change-data select {
+    width: 100%;
+    min-height: 25px;
+    align-self: stretch;
+}
+div.child-box-change-data>.hidden_var {
+    display: none;
+}
+div.child-box-change-data>img {
+    width: 23px;
+    height: 23px;
+    margin: 1px;
+    border-radius: 0px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+div.child-box-change-data>img:hover {
+    box-shadow: 0 0 6px #e0ff00;
+    -webkit-box-shadow: 0 0 6px #e0ff00;
+    -moz-box-shadow: 0 0 6px #e0ff00;
+}
+/* ══ BOX CHANGE DATA ════════╝  END  ╚═ */
+
+/* ══ CHILD BOX BUTTON ════════╗ START ╔═ */
+div.child-box-button {
+    flex-direction: row;
+    justify-content: flex-end;
+    z-index: 3;
+}
+div.child-box-button>img {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    border-radius: 0px;
+    cursor: pointer;
+}
+div.child-box-button>img:hover {
+    box-shadow: 0 0 6px #e0ff00;
+    -webkit-box-shadow: 0 0 6px #e0ff00;
+    -moz-box-shadow: 0 0 6px #e0ff00;
+}
+/* ══ CHILD BOX BUTTON ════════╝  END  ╚═ */
+
+/* ══ EL LABEL COMMENT ════════╗ START ╔═ */
+.el-label-comment {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 25px;
+    text-shadow: none;
+    color: black;
+    font: 14px 'FontAwesome' ,Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: -25px;
+    background: #ffd000;
+    padding: 4px;
+    border-radius:10px 10px 0 0 ;
+}
+.el-label-comment-on {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    height: 11px;
+    text-shadow: none;
+    color: black;
+    font: 9px 'FontAwesome' ,Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: -11px;
+    float: left;
+    letter-spacing: 2px;
+    background: #ffd000;
+    padding: 0px;
+    border-radius:10px 0 10px 0 ;
+}
+.el-label-comment-on + .el-subject-label {
+    padding-top: 13px;
+}
+/* ══ EL LABEL COMMENT ════════╝  END  ╚═ */
+
+/* ══ CHILD BOX LOAD IMG ════════╗ START ╔═ */
+div.child-box-load-img {
+    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin: 5px;
+}
+div.child-box-load-img>div.child-box-image {
+    align-items: center;
+    min-width: 140px;
+    min-height: 100px;
+    padding: 15px;
+}
+div.child-box-image>figure {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+div.child-box-load-img>img {
+    width: 23px;
+    height: 23px;
+    margin: 1px;
+    border-radius: 0px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+div.child-box-load-img>img {
+    width: 23px;
+    height: 23px;
+    margin: 1px;
+    border-radius: 0px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+div.child-box-load-img input.js-load-file {
+    display: none;
+}
+/* ══ CHILD BOX LOAD IMG ════════╝  END  ╚═ */
+
+/* ══ CHILD BOX LOAD FILE ════════╗ START ╔═ */
+div.child-box-load-file {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 1px 4px;
+}
+div.child-box-load-file>img {
+    width: 20px;
+    height: 20px;
+    margin: 0px 2px;
+    cursor: pointer;
+}
+div.child-box-load-file>input[type="file"] {
+    display: none;
+}
+/* ══ CHILD BOX LOAD FILE ════════╝  END  ╚═ */
+
+/* ══ TABLE STYLE ════════╗ START ╔═ */
+table {
+    table-layout: auto;
+    width: auto;
+    height: auto;
+    text-shadow: none;
+}
+table tr td {
+    word-break: break-all;
+}
+
+tr {
+    text-align: center;
+    padding: 0px 3px;
+}
+
+th {
+    text-align: center;
+    padding: 2px;
+}
+
+th>input {
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    padding: 2px;
+    background: background: rgba(206, 171, 107, 0.0);
+}
+/* ══ TABLE STYLE ════════╝  END  ╚═ */
+
+/* ══ FILTER FOR TABLE ════════╗ START ╔═ */
+table.el-table-filter {
+    border-radius: 15px 15px 0 0;
+}
+table.el-table-filter input {
+    height: 20px;
+    padding-left: 22px;
+    padding-right: 15px;
+    border-radius: 15px 15px 0 0;
+    box-shadow: none;
+}
+table.el-table-filter th {
+    padding: 1px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+table.el-table-filter label {
+    position: relative;
+    float: left;
+    color: black;
+    margin-top: -15px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+    z-index: 3;
+}
+/* ══ FILTER FOR TABLE ════════╝  END  ╚═ */
+
+/* ══ LIGHT TABLE ════════╗ START ╔═ */
+.el-table-light {
+    font: 11.5px "Arial", "Helvetica", sans-serif;
+    background: #eaebec;
+    text-shadow: 1px 1px 1px #fff;
+    border-radius: 3px;
+    border: #ccc 1px solid;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-box-shadow: 0 0px 2px #d1d1d1;
+    -webkit-box-shadow: 0 0px 2px #d1d1d1;
+    box-shadow: 0 0px 2px #d1d1d1;
+}
+.el-table-light th {
+    color: #000;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #ffffff;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    background: -webkit-linear-gradient(top, #dbd9d9 0%, #c1c1c1 20%, #999797 50%, #c1c1c1 80%, #fcfff4 100%);
+    background: -moz-linear-gradient(top, #dbd9d9 0%, #c1c1c1 20%, #999797 50%, #c1c1c1 80%, #fcfff4 100%);
+    background: -o-linear-gradient(top, #dbd9d9 0%, #c1c1c1 20%, #999797 50%, #c1c1c1 80%, #fcfff4 100%);
+    background: -ms-linear-gradient(top, #dbd9d9 0%, #c1c1c1 20%, #999797 50%, #c1c1c1 80%, #fcfff4 100%);
+    background: linear-gradient(top, #dbd9d9 0%, #c1c1c1 20%, #999797 50%, #c1c1c1 80%, #fcfff4 100%);
+}
+.el-table-light td {
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#f9f9f9));
+    background: -moz-linear-gradient(top, #fbfbfb, #f9f9f9);
+}
+.el-table-light tr:hover td {
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+    cursor: pointer;
+}
+/* ══ LIGHT TABLE ════════╝  END  ╚═ */
+
+/* ══ DARK TABLE ════════╗ START ╔═ */
+.el-table-dark {
+    font: 11.5px "Arial", "Helvetica", sans-serif;
+    background: #191818;
+    color: #ffffff;
+    border-radius: 3px;
+    border: #ccc 1px solid;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-box-shadow: 0 0px 2px #d1d1d1;
+    -webkit-box-shadow: 0 0px 2px #d1d1d1;
+    box-shadow: 0 0px 2px #d1d1d1;
+}
+.el-table-dark th {
+    color: #fff;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #ffffff;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    background: -webkit-linear-gradient(top, #212121 0%, #333333 20%, #333333 50%, #424141 80%, #212121 100%);
+    background: -moz-linear-gradient(top, #212121 0%, #333333 20%, #333333 50%, #424141 80%, #212121 100%);
+    background: -o-linear-gradient(top, #212121 0%, #333333 20%, #333333 50%, #424141 80%, #212121 100%);
+    background: -ms-linear-gradient(top, #212121 0%, #333333 20%, #333333 50%, #424141 80%, #212121 100%);
+    background: linear-gradient(top, #212121 0%, #333333 20%, #333333 50%, #424141 80%, #212121 100%);
+}
+.el-table-dark td {
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#212121));
+    background: -moz-linear-gradient(top, #333333, #212121);
+}
+.el-table-dark tr:hover td {
+    color: #000;
+    background: #f2f2f2;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+    background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
+    cursor: pointer;
+}
+/* ══ DARK TABLE ════════╝  END  ╚═ */
+
+.el-flex,
+.flex-row,
+.flex-col,
+.child-box-box {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+/* ══ BORDER RADIUS ════════╗ START ╔═ */
+.brRad {
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+.brRad-lf {
+    border-radius: 15px 0px 0px 15px;
+    -moz-border-radius: 15px 0px 0px 15px;
+    -webkit-border-radius: 15px 0px 0px 15px;
+}
+.brRad-rh {
+    border-radius: 0px 15px 15px 0px;
+    -moz-border-radius: 0px 15px 15px 0px;
+    -webkit-border-radius: 0px 15px 15px 0px;
+}
+/* ══ BORDER RADIUS ════════╝  END  ╚═ */
+
+/* ══ DARK THEME ════════╗ START ╔═ */
+.box-shadow-dark {
+    border-radius: 20px;
+    background: #2c2d30;
+    color: white;
+    box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #ffffff;
+    -webkit-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #ffffff;
+    -moz-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #ffffff;
+}
+.box-shadow-dark>span {
+    color:#e6e6e6;
+    text-shadow: 0px 0px 0.5px #f7eaea;
+}
+/* ══ DARK THEME ════════╝  END  ╚═ */
+
+/* ══ LIGHT THEME ════════╗ START ╔═ */
+.box-shadow-light {
+    border-radius: 20px;
+    background: #ffffff;
+    color: black;
+    box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #0000003d;
+    -webkit-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #00000066;
+    -moz-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px #00000066;
+}
+.box-shadow-light>span {
+    color:#4d4d4d;
+    text-shadow: 0px 0px 0.5px #2c2d30;
+}
+/* ══ LIGHT THEME ════════╝  END  ╚═ */
+
+/* ══ FRAME ════════╗ START ╔═ */
+.box-shadow {
+    border-radius: 20px;
+    box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px rgba(0, 0, 0, .24);
+    -webkit-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 0 10px #BEB8B6, inset 0 0 8px rgba(0, 0, 0, .4);
+}
+/* ══ FRAME ════════╝  END  ╚═ */
+
+/* ══ ОТКЛЮЧАЕМ/СКРЫВАЕМ ЭЛЕМЕНТ ════════╗ START ╔═ */
+.el-disabled {
+    z-index: -1;
+    opacity : 0.6;
+}
+.el-hiden {
+    display: none;
+}
+/* ══ ОТКЛЮЧАЕМ/СКРЫВАЕМ ЭЛЕМЕНТ ════════╝  END  ╚═ */
+
+/* ══ DRAWING OUT FIELDS FOR INPUT ════════╗ START ╔═ */
+.el-textarea {
+    height: 60px;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    outline-style: none;
+    font-family: Arial, 'FontAwesome', Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    resize: none;
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,.2);
+    -webkit-box-shadow: inset  0 0 8px rgba(0,0,0,.2);
+    box-shadow: inset  0 0 8px rgba(0,0,0,.24);
+}
+.el-input {
+    height: 24px;
+    border: none;
+    outline-style: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: Arial, 'FontAwesome', 'Helvetica';
+    font-size: 12px;
+    text-align: center;
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,.2);
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,.2);
+    box-shadow: inset  inset 0 0 8px rgba(0,0,0,.24);
+}
+.el-select {
+    height: 24px;
+    padding-left: 10px;
+    outline: none;
+    font-family: Arial, 'FontAwesome', 'Helvetica';
+    vertical-align: middle;
+    -webkit-appearance: none;
+    box-shadow: inset  0 0 8px rgba(0,0,0,.24);
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,.4);
+    -webkit-box-shadow: inset  0 0 8px rgba(0,0,0,.4);
+}
+/* ══ DRAWING OUT FIELDS FOR INPUT ════════╝  END  ╚═ */
+
+.el-light {
+    background:#f7fcfc;
+    color: black;
+}
+.el-orange {
+    background:#FFCC33;
+    color: black;
+    font-weight: bold;
+}
+.el-green {
+    background:#22ba14;
+    color: black;
+    font-weight: bold;
+}
+.el-red {
+    background:#d60b08;
+    color: white;
+    font-weight: bold;
+}
+.el-dark {
+    background: #8b8d8e;
+    color: white;
+}
+.el-clear {
+    background: rgba(206, 171, 107, 0.0);
+    color: black;
+    box-shadow: none;
+    text-shadow: 0px 0px 6px #fff;
+    font-weight: bold;
+}
+.highlight {
+  color: red;
+  padding: 0;
+}
