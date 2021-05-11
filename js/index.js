@@ -254,7 +254,7 @@ function saveDataFromBox() {
     const $box     = $but.parentElement.parentElement;
 
     i = 0;
-    let arrBut = []; /* ══ data array кнопок ══ */ 
+    let arrBut = []; /* ══ array of buttons data ══ */ 
     let siblings = getAllSiblings($but);
     siblings.forEach( (item) => {
         ( item.id ) ? id = item.id : id = '';
@@ -312,7 +312,7 @@ function saveDataFromBox() {
         contentType: false,
         cache: false,
         success: function(result) {
-            (func) ? window[func]() : null;    /* ══ функция обновления данных ══ */
+            (func) ? window[func]() : null;    /* ══ data refresh function ══ */
             setTimeout(function() { alert(result) }, 100);
         }
     })
