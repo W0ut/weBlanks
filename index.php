@@ -12,7 +12,7 @@
     <script type='text/javascript' src='js/jquery-3.6.0.min.js'></script>
     <!-- НЕОБХОДИМ ДЛЯ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ И ИХ ЭСКИЗОВ -->
     <script type='text/javascript' src='js/load-image.all.min.js'></script>
-    <script type='text/javascript' src='js/p5.min.js'></script>
+    <!--<script type='text/javascript' src='js/p5.min.js'></script> -->
     <script type='text/javascript' src='js/index.js'></script>
     <!--╚═╝ JS ╚════════════════════════════════════╝  END  ╚════╝ -->
 </head>
