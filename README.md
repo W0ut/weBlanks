@@ -19,7 +19,4 @@ Ready-made modular blocks for your project
        
 ![7](https://user-images.githubusercontent.com/17479884/118388454-6a297580-b646-11eb-8748-7e81f40a2f71.jpg)
 
-       # Full video
-        
-  https://user-images.githubusercontent.com/17479884/118388372-e53e5c00-b645-11eb-937b-e9afab88142c.mp4
 
