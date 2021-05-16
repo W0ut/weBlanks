@@ -3,6 +3,27 @@
 $(document).ready( () => {
     // Here we will write the functions that will be executed when the page is loaded
     checkClassComment();
+
+    // effect for scrollbar
+    let progress = document.getElementById('progressbar');
+    let totalHeight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = function() {
+        let progressHeight = ( window.pageYOffset / totalHeight ) * 100;
+        progress.style.height = progressHeight + '%';
+    }
+
+    // smoke effect css
+    const smokeEl = document.querySelectorAll('.smoke');
+    smokeEl.forEach( (item) => {
+        item.innerHTML = item.textContent.replace(/\S/g, '<span>$&</span>');
+        const letters = item.querySelectorAll('span');
+        for ( let i=0; i < letters.length; i++ ) {
+            // here is a function without jQuery
+            letters[i].addEventListener('mouseout', () => letters[i].classList.add('active'));
+            letters[i].addEventListener('mouseover', () => letters[i].classList.remove('active'));
+        }
+    });
+
 });
 
 $(document).on('blur', '.el-subject-label', toggleClassComment);
@@ -13,6 +34,15 @@ $(document).on('click', '.js-post-but', saveDataFromBox);
 $(document).on('change', '.js-load-file', uploadImageWithThumb);
 $(document).on('click', '.js-ch-thumb', clickLoad);
 $(document).on('keyup', '.js-el-filter', filterAndHidenTrTable);
+$(document).on('click', '.btn-menu', toggleMenu);
+
+/* ══ CHANGE CLASS MENU ════════╗ START ╔═ */
+function toggleMenu(event) {
+    if ( event.type === 'touchstart' ) event.preventDefault();
+    const nav = document.getElementById('nav');
+    nav.classList.toggle('active');
+}
+/* ══ CHANGE CLASS MENU ════════╝  END  ╚═ */
 
 /* ══ CHANGE THE CLASSES OF THE OBJECT ════════╗ START ╔═ */
 const toggleClass = (obj = this, class1, class2) => {
@@ -429,31 +459,67 @@ function getResultParseTable(obj) {
 
 /* ══ SEARCH BY TABLE WITHOUT POST REQUEST ════════╗ START ╔═ */
 function filterAndHidenTrTable() {
-    const str = this.value;
-    const index = this.parentNode.cellIndex;
-    const tr = this.parentNode.parentNode;
-    
-    if ( str && str.length >= 2) {
-        let nextTr = getFoundSiblings(tr, 'tr');
-        nextTr.forEach( (item) => {
-            const tdT = item.cells[index];
-            const tdText = item.cells[index].innerText;
-            ( tdText.search(str) != -1 ) ? toggleClass(item, 'el-hiden', null) :
-                toggleClass(item, null, 'el-hiden');
-            let regx = new RegExp(str, "g");
-            let newstring = tdText.replace(regx, '<span class="highlight">' + str + '</span>')
-            tdT.innerHTML = newstring;
+    const tbody = this.parentNode.parentNode.parentNode;
+    const arrInput = tbody.querySelectorAll('.js-el-filter');
+    const arrCountTr = [];
+
+    let noElem = tbody.querySelector('.no-matches');
+    if ( noElem ) noElem.remove();
+
+    Array.prototype.slice.call(arrInput).forEach( ($elInput, index, arr) => {
+
+        const str   = $elInput.value;
+        const th    = $elInput.parentNode;
+        const tr    = $elInput.parentNode.parentNode;
+        const ind   = th.cellIndex;
+        const arrTd = [];
+
+        getFoundSiblings(tr, 'tr').forEach( (item) => {
+            if ( item.cells[ind]?.nodeName === 'TD' ) arrTd.push(item.cells[ind]);
         });
-    }
-    if ( str.length <= 1 ) {
-        let nextTr = getFoundSiblings(tr, 'tr');
-        nextTr.forEach( (item) => {
-            const tdT = item.cells[index];
-            const tdText = item.cells[index].innerText;
-            tdT.innerHTML = tdText;
-            ( tdText.search(str) != -1 ) ? toggleClass(item, 'el-hiden', null) :
-                toggleClass(item, null, 'el-hiden');
-        });
-    }
+
+        let numTr = arrTd.length;    /* ══ строк/ячеек с данными ══ */
+
+        if ( str.length >= 0 ) {
+            arrTd.forEach( (item, index, arr) => {
+
+                let counter = Number( arrCountTr[index] );
+                ( counter > 0 ) ? arrCountTr[index] = arrCountTr[index] : arrCountTr[index] = 0;
+                const tdText = item.innerText;
+
+                if ( tdText.search(str) != -1 ) {
+                    if ( arrCountTr[index] === 0 ) item.parentNode.classList.remove('el-hiden');
+                } else {    
+                    numTr--;
+                    arrCountTr[index] = ++arrCountTr[index];
+                    item.parentNode.classList.add('el-hiden');
+                }
+
+                if ( numTr === 0 ) arr.length = index + 1;    /* ══ Останавливаем перебор строк ══ */
+
+                // выделяем/подсвечиваем совпадение в тексте 
+                let regx = new RegExp(str, "g");
+                let newstring = tdText.replace(regx, '<span class="highlight">' + str + '</span>');
+                item.innerHTML = newstring;
+
+            });
+            
+            if ( numTr === 0 ) {
+                
+                arr.length = index + 1;    /* ══ Останавливаем перебор колонок ══ */
+
+                // Вставляем строка с текстом что нет совпадений
+                const numCol = tr.cells.length;
+                noElem = document.createElement('tr');
+                noElem.style.display = 'table-row';
+                noElem.className = 'no-matches';
+                noElem.innerHTML = `<td colspan=${numCol}> no matches </td>`;
+                tbody.append(noElem);
+            }
+
+        }
+
+    })    
+
 }
 /* ══ SEARCH BY TABLE WITHOUT POST REQUEST ════════╝  END  ╚═ */

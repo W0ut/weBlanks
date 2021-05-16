@@ -5,11 +5,155 @@ body {
     z-index: 1;
 }
 
-span {
+p, span {
     text-align: center;
     padding: 0px 6px;
     cursor: default;
 }
+
+#box3 canvas {
+    position: absolute;
+    z-index: 6;
+    mix-blend-mode: soft-light;
+}
+
+/* ══ MENU BOX ════════╗ START ╔═ */
+.box-menu {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    min-width: 500px;
+    min-height: 80px;
+    padding: 1rem 3rem;
+    z-index: 1;
+    background: #333333;
+}
+
+.box-menu a {
+    color: white;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+.box-menu a:hover {
+    background: rgba(0, 0, 0, .05);
+}
+
+#logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+#nav {
+    display: flex;
+    align-items: center;
+}
+
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+#menu a {
+    display: block;
+    margin: .5rem;
+}
+
+#btn-mobile {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    #menu {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        top: 80px;
+        right: 0px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-content: space-around;
+        justify-content: flex-start;
+        align-items: center;
+        background: #333333;
+        transition: 0.3s;
+        z-index: 1000;
+        height: 0vh;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+
+    #nav.active #menu {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-content: space-around;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50vh;
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    #menu a {
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid #ad9f9f14;
+    }
+
+    #btn-mobile {
+        display: flex;
+        color: white;
+        padding: .5rem 1rem;
+        font-size: 2rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    #span-menu {
+        color: white;
+        cursor: pointer;
+        padding: 0px;
+        border-top: 2px solid;
+        width: 24px;
+    }
+
+    #span-menu::after, #span-menu::before {
+        display: block;
+        color: white;
+        border-top: 2px solid;
+        content: '';
+        width: 24px;
+        height: 2px;
+        margin-top: 5px;
+    }
+
+    #nav.active #span-menu {
+        display: block;
+        border-top-color: transparent;
+    }
+
+    #nav.active #span-menu::after {
+        color: #00ffe7;
+        transform: rotate(135deg);
+        margin-top: -1px;
+    }
+
+    #nav.active #span-menu::before {
+        color: #00ffe7;
+        transform: rotate(-135deg);
+        margin-top: -1px;
+    }
+}
+/* ══ MENU BOX ════════╝  END  ╚═ */
 
 /* ══ GENERAL BOX ════════╗ START ╔═ */
 .box-general {
@@ -21,16 +165,16 @@ span {
     align-content: flex-start;
     align-self: flex-start;
     top: 70px;
-    min-width: 1200px;
+    min-width: 500px;
     min-height: 600px;
     padding: 4px;
     z-index: 1;
-    background: #ffdc75;
+    background: #191918;
 }
 /* ══ GENERAL BOX ════════╝  END  ╚═ */
 
 /* ══ CHILD-BOX ════════╗ START ╔═ */
-.box-general>div.child-box {
+.box-general>section.child-box {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -43,7 +187,7 @@ span {
     padding: 10px 5px;
     z-index: 2;
 }
-.box-general>div.child-box>span {
+.box-general>section.child-box>span {
     align-self: flex-start;
     margin: 4px 0px;
     width: 100%;
@@ -51,7 +195,7 @@ span {
     font-size: 16px;
     z-index: 3;
 }
-.box-general>div.child-box>div {
+.box-general>section.child-box>div {
     display: flex;
     width: 100%;
     height: auto;
@@ -59,12 +203,12 @@ span {
     padding: 2px;
     z-index: 3;
 }
-.box-general>div.child-box table {
+.box-general>section.child-box table {
     width: 100%;
     margin: 3px;
     padding: 2px;
 }
-.box-general>div.child-box table tr td {
+.box-general>section.child-box table tr td {
     padding: 2px 0px;
 }
 /* ══ CHILD-BOX ════════╝  END  ╚═ */
@@ -84,9 +228,9 @@ div.child-box-data>img {
     cursor: pointer;
 }
 div.child-box-data>img:hover {
-    box-shadow: 0 0 6px #e0ff00;
-    -webkit-box-shadow: 0 0 6px #e0ff00;
-    -moz-box-shadow: 0 0 6px #e0ff00;
+    box-shadow: 0 0 6px #00ffe7;
+    -webkit-box-shadow: 0 0 6px #00ffe7;
+    -moz-box-shadow: 0 0 6px #00ffe7;
 }
 div.child-box-data>input,
 div.child-box-data>select {
@@ -123,9 +267,9 @@ div.child-box-change-data>img {
     align-self: flex-start;
 }
 div.child-box-change-data>img:hover {
-    box-shadow: 0 0 6px #e0ff00;
-    -webkit-box-shadow: 0 0 6px #e0ff00;
-    -moz-box-shadow: 0 0 6px #e0ff00;
+    box-shadow: 0 0 6px #00ffe7;
+    -webkit-box-shadow: 0 0 6px #00ffe7;
+    -moz-box-shadow: 0 0 6px #00ffe7;
 }
 /* ══ BOX CHANGE DATA ════════╝  END  ╚═ */
 
@@ -143,9 +287,9 @@ div.child-box-button>img {
     cursor: pointer;
 }
 div.child-box-button>img:hover {
-    box-shadow: 0 0 6px #e0ff00;
-    -webkit-box-shadow: 0 0 6px #e0ff00;
-    -moz-box-shadow: 0 0 6px #e0ff00;
+    box-shadow: 0 0 6px #00ffe7;
+    -webkit-box-shadow: 0 0 6px #00ffe7;
+    -moz-box-shadow: 0 0 6px #00ffe7;
 }
 /* ══ CHILD BOX BUTTON ════════╝  END  ╚═ */
 
@@ -512,6 +656,154 @@ table.el-table-filter label {
 }
 /* ══ DRAWING OUT FIELDS FOR INPUT ════════╝  END  ╚═ */
 
+/* ══ SCROLLBAR ════════╗ START ╔═ */
+::-webkit-scrollbar {
+    width: 1px;
+    background: #333333;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #008aff, #00ffe7);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to top, #008aff, #00ffe7);
+}
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(to top, #008aff, #00ffe7);
+}
+
+#scrollPath {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 2px;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%, 100% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#progressbar:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(15px);
+}
+
+#progressbar:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to top, #008aff, #00ffe7);
+    filter: blur(15px);
+}
+/* ══ SCROLLBAR ════════╝  END  ╚═ */
+
+/* ══ SMOKE CSS ════════╗ START ╔═ */
+.smoke span {
+    padding: 0;
+}
+.smoke span.active {
+    animation: onSmoke 5s linear forwards;
+}
+
+@keyframes onSmoke {
+    0% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    15% {
+        opacity: 0.8;
+        filter: blur(4px);
+    }
+    25% {
+        opacity: 0.75;
+        filter: blur(7px);
+    }
+    45% {
+        opacity: 0.6;
+        filter: blur(9px);
+    }
+    65% {
+        opacity: 0.4;
+        filter: blur(14px);
+    }
+    85% {
+        opacity: 0.2;
+        filter: blur(20px);
+    }
+    95% {
+        opacity: 0.1;
+        filter: blur(25px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.smoke span {
+    animation: offSmoke 4s linear forwards;
+}
+
+@keyframes offSmoke {
+    0% {
+        opacity: 0;
+        filter: blur(0);
+    }
+    15% {
+        opacity: 0.1;
+        filter: blur(25px);
+    }
+    25% {
+        opacity: 0.2;
+        filter: blur(20px);
+    }
+    45% {
+        opacity: 0.4;
+        filter: blur(14px);
+    }
+    65% {
+        opacity: 0.6;
+        filter: blur(9px);
+    }
+    85% {
+        opacity: 0.75;
+        filter: blur(7px);
+    }
+    95% {
+        opacity: 0.8;
+        filter: blur(4px);
+    }
+     100% {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+/* ══ SMOKE CSS ════════╝  END  ╚═ */
+
 .el-light {
     background:#f7fcfc;
     color: black;
@@ -545,4 +837,13 @@ table.el-table-filter label {
 .highlight {
   color: red;
   padding: 0;
+}
+.el-name-column {
+    letter-spacing: 2px;
+}
+
+.content {
+    justify-content: center;
+    color: #2c2d30;
+    z-index: 4;
 }

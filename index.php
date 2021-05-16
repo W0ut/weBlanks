@@ -12,17 +12,59 @@
     <script type='text/javascript' src='js/jquery-3.6.0.min.js'></script>
     <!-- НЕОБХОДИМ ДЛЯ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ И ИХ ЭСКИЗОВ -->
     <script type='text/javascript' src='js/load-image.all.min.js'></script>
+    <script type='text/javascript' src='js/p5.min.js'></script>
     <script type='text/javascript' src='js/index.js'></script>
     <!--╚═╝ JS ╚════════════════════════════════════╝  END  ╚════╝ -->
 </head>
+<style type="text/css">
+    
+</style>
+<script type='text/javascript'>
+    function setup() {
+        let canvasDiv = document.getElementById('hideSection');
+        let width = canvasDiv.clientWidth;
+        let height = canvasDiv.clientHeight;
+        let canvas = createCanvas(width, height);
+        canvas.parent('hideSection');
+    }
+    function draw() {
+        stroke(120);
+        strokeWeight(30);
+        if (mouseIsPressed === true) line(mouseX, mouseY, pmouseX, pmouseY);
+    }
+</script>
 <body>
+
+    <!-- ══ SCROLLBAR ════════╗ START ╔═ -->
+    <div id='progressbar'></div>
+    <div id='scrollPath'></div>
+    <!-- ══ SCROLLBAR ════════╝  END  ╚═ -->
+
+    <!-- ══ BOX MENU ════════╗ START ╔═ -->
+    <header class='box-menu'>
+        <a id='logo' href=''>LOGO</a>
+        <nav id='nav'>
+            <button id='btn-mobile' class='btn-menu'>MENU</button>
+            <span id='span-menu' class='btn-menu'></span>
+
+            <ul id='menu' role='menu'>
+                <li><a href=''>First</a></li>
+                <li><a href=''>Second</a></li>
+                <li><a href=''>Third</a></li>
+                <li><a href=''>Fourth</a></li>
+                <li><a href=''>Fifth</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ══ BOX MENU ════════╝  END  ╚═ -->
+
     <div class='box-general'>
 
         <!-- ══ BOX 1 ════════╗ START ╔═ -->
-        <div class='child-box box-shadow-dark' >
+        <section class='child-box box-shadow-dark' >
             <span>Block header № 1</span>
 
-            <div class='child-box-box flex-col'>
+            <div class='child-box-box flex-col' >
                 <div class='child-box-data'>
                     <input class='el-input el-orange el-comm brRad-lf' value='parameter 1 &nbsp;&#xf105;' readonly style='width: 100px;' />
                     <!-- 
@@ -142,11 +184,11 @@
                 <img class='js-post-but' alt='' func='sipmleFunc' name='del' id='save/save_data.php' src='images/del_light.png' title='delete'>
             </div>
             <!-- ══ БЛОК ОТПРАВКИ ВСЕЙ ИНФОРМАЦИИ POST ЗАПРОСОМ ════════╝  END  ╚═ -->
-        </div>
+        </section>
         <!-- ══ BOX 1 ════════╝  END  ╚═ -->
 
         <!-- ══ БЛОК 2 ════════╗ START ╔═ -->
-        <div class='child-box box-shadow-light' >
+        <section class='child-box box-shadow-light' >
             <span>Заголовок блока № 2</span>
 
             <div class='child-box-box flex-col'>
@@ -218,11 +260,11 @@
                 <img class='js-post-but' alt='' func='sipmleFunc' name='del' id='save/save_data.php' src='images/del_dark.png' title='удалить'>
             </div>
             <!-- ══ БЛОК ОТПРАВКИ ВСЕЙ ИНФОРМАЦИИ POST ЗАПРОСОМ ════════╝  END  ╚═ -->
-        </div>
+        </section>
         <!-- ══ БЛОК 2 ════════╝  END  ╚═ -->
 
         <!-- ══ BOX 3 ════════╗ START ╔═ -->
-        <div class='child-box box-shadow-dark' >
+        <section class='child-box box-shadow-dark' id='box3'>
             <span>Block header № 3</span>
             <div class='child-box-box'>
                 <table class='js-table-data el-table-dark'>
@@ -268,6 +310,14 @@
                         </th>
                     </tr>
                     <tr>
+                        <th>
+                            <span class='el-name-column el-red'> Name column 1</span>
+                        </th>
+                        <th>
+                            <span class='el-name-column el-red'> Name column 2</span>
+                        </th>
+                    </tr>
+                    <tr>
                         <td>data 1</td>
                         <td>data 2</td>
                     </tr>
@@ -281,13 +331,40 @@
                     </tr>
                 </table>
             </div>
+        <div class='child-box-box flex-col' id='hideSection'>
+            <span style='color: #ffdc75;'>Reveal Content Effects using p5.js <br> Need to include type='text/javascript' src='js/p5.min.js'  </span>
+            <div class='child-box-box content'>
+                <p>
+                    Here is your hidden content<br>
+                    Here is your hidden content<br>
+                </p>
+            </div>
+        </div>
             <!-- ══ PRINT TABLE DATA ════════╗ START ╔═ -->
             <div class='child-box-button access-write'>
                 <img class='js-post-but' alt='' func='sipmleFunc' name='prt' id='save/save_data.php' src='images/print_light.png' title='print'>
             </div>
             <!-- ══ PRINT TABLE DATA ════════╝  END  ╚═ -->
-        </div>
+        </section>
         <!-- ══ BOX 3 ════════╝  END  ╚═ -->
+
+        <!-- ══ BOX 4 (SMOKE) ════════╗ START ╔═ -->
+        <section class='child-box box-shadow-dark' style='width: 250px;'>
+            <span>Smoke effect css</span>
+            <div class='child-box-box'>
+                <p class='smoke'>
+                    Hover over this text and you  <br>
+                    will see its spectacular disappearance
+                </p>
+            </div>
+            <div class='child-box-box'>
+                <p class='smoke'>
+                    Наведи курсор на этот текст и ты  <br>
+                    увидешь его эффектное исчезновение 
+                </p>
+            </div>
+        </section>
+        <!-- ══ BOX 4 (SMOKE) ════════╝  END  ╚═ -->
 
     </div>
 </body>
